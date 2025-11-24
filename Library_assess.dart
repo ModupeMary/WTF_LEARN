@@ -25,12 +25,13 @@ class Book {
 }
 
 class Library {
+  final int maxCapacity = 70;
   List<Book?> books = List.filled(70, null);
   int bookCount = 0;
 
-  Library() {
-    books = List.filled(70, null);
-  }
+  //Library() {
+  // books = List.filled(70, null);
+  //}
 
   void addBook(Book book) {
     if (bookCount >= 70) {
@@ -79,6 +80,36 @@ class Library {
   }
 }
 
+//This is an helper function for our main logic
+
+void _borrowReturnBook(
+  Library library,
+  String title, {
+  required String action,
+}) {
+  bool found = false;
+
+  for (int i = 0; i < library.bookCount; i++) {
+    Book? book = library.books[i];
+
+    if (book != null && book.title.toLowerCase() == title.toLowerCase()) {
+      if (action == 'borrow') {
+        book.borrowBook();
+      } else {
+        book.returnBook();
+      }
+
+      found = true;
+      break;
+    }
+  }
+
+  if (!found) {
+    print("The book with $title not found in the library");
+  }
+}
+
+//================ Main Function ================
 void main() {
   var library = Library();
 
@@ -113,7 +144,7 @@ void main() {
     print("3. Borrow a book");
     print("4. Return a book");
     print("5. Exit");
-    print("Enter your choice:");
+    print("Enter your a number to interact with the Library1:");
 
     String? choice = stdin.readLineSync();
 
@@ -144,6 +175,7 @@ void main() {
         if (titleToReturn != null) {
           _borrowReturnBook(library, titleToReturn, action: 'return');
         }
+        break;
 
       case '5':
         running = false;
