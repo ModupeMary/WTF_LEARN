@@ -25,7 +25,7 @@ class HomePage extends StatelessWidget {
               decoration: InputDecoration(
                 fillColor: Colors.grey,
                 filled: true,
-                prefixIcon: Icon(Icons.search)
+                prefixIcon: Icon(Icons.search),
                 hintText: "Search hospital or address",
                 border: OutlineInputBorder(
                   borderSide: BorderSide.none,

@@ -10,7 +10,7 @@ class BottomNavigation extends StatefulWidget {
 }
 
 class _BottomNavigationState extends State<BottomNavigation> {
-  int pageToShow = 0;
+  int indexToBeShown = 0;
 
   var pages = [HomePage(), ContactPage(), ContactPage()];
 
@@ -24,8 +24,7 @@ class _BottomNavigationState extends State<BottomNavigation> {
         onTap: (value) {
           setState(() {
             indexToBeShown = value;
-          }
-          );
+          });
         },
         items: [
           BottomNavigationBarItem(label: "Home", icon: Icon(Icons.home)),
